@@ -18,6 +18,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, GalleryComponent, ImgComponent],
@@ -33,7 +35,8 @@ import { MatIconModule } from "@angular/material/icon";
     MatDialogModule,
     MatToolbarModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ImagesService],
   bootstrap: [AppComponent]
