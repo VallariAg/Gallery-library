@@ -124,6 +124,14 @@
               "devServerTarget": "library:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/library",
+            "netlifyToken": "q",
+            "siteId": "de36b00e-a1de-4b83-930c-b62b56e83dab"
+          }
         }
       }
     }
