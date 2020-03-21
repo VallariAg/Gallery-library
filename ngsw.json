@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1584717352327,
+  "timestamp": 1584829081658,
   "index": "https://VallariAg.github.io/Gallery-library/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://VallariAg.github.io/Gallery-library/favicon.ico",
         "https://VallariAg.github.io/Gallery-library/index.html",
-        "https://VallariAg.github.io/Gallery-library/main-es2015.c0a44d508e83ff726550.js",
-        "https://VallariAg.github.io/Gallery-library/main-es5.c0a44d508e83ff726550.js",
+        "https://VallariAg.github.io/Gallery-library/main-es2015.3d96c084eebad721594f.js",
+        "https://VallariAg.github.io/Gallery-library/main-es5.3d96c084eebad721594f.js",
         "https://VallariAg.github.io/Gallery-library/manifest.webmanifest",
         "https://VallariAg.github.io/Gallery-library/polyfills-es2015.5b10b8fd823b6392f1fd.js",
         "https://VallariAg.github.io/Gallery-library/polyfills-es5.3e8196928d184a6e5319.js",
@@ -51,10 +51,10 @@
     "https://VallariAg.github.io/Gallery-library/assets/icons/icon-96x96.png": "afaded4c53758a7f75af3de372aafc4ef00a1fad",
     "https://VallariAg.github.io/Gallery-library/assets/images.json": "474a7f4d5d76ac72e267a0577d16ffcaa0985411",
     "https://VallariAg.github.io/Gallery-library/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://VallariAg.github.io/Gallery-library/index.html": "7758a7404dea622da0dae71e8ec411ff2164af66",
-    "https://VallariAg.github.io/Gallery-library/main-es2015.c0a44d508e83ff726550.js": "f370fd91f152b20b82ea9a69241d89a4c4313dbc",
-    "https://VallariAg.github.io/Gallery-library/main-es5.c0a44d508e83ff726550.js": "3a8cd341c82fb82bb7caf767ef462126e0925476",
-    "https://VallariAg.github.io/Gallery-library/manifest.webmanifest": "6c86f9ff500d26adfa2e985e7b1f9f5884f2e9f8",
+    "https://VallariAg.github.io/Gallery-library/index.html": "82f5d1b73f34a49406952dcab8b4f84d391a8aa7",
+    "https://VallariAg.github.io/Gallery-library/main-es2015.3d96c084eebad721594f.js": "0fdc530d77c43459c526fb1ec7f76de402f15f7a",
+    "https://VallariAg.github.io/Gallery-library/main-es5.3d96c084eebad721594f.js": "1d3e3075c781492a0a5e8878e780640a28de53ec",
+    "https://VallariAg.github.io/Gallery-library/manifest.webmanifest": "0438ae1d43ddeb930079f76b6b97a4f9fc57f549",
     "https://VallariAg.github.io/Gallery-library/polyfills-es2015.5b10b8fd823b6392f1fd.js": "9abfe15f17820a646e3d51c420908d9f8f7b69b8",
     "https://VallariAg.github.io/Gallery-library/polyfills-es5.3e8196928d184a6e5319.js": "f6c5fc657a380e4c3e4dc31528d4c425f71f77f8",
     "https://VallariAg.github.io/Gallery-library/runtime-es2015.c5fa8325f89fc516600b.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
