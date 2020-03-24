@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 import { Data, ImagesService } from "../images.service";
 
 @Component({
@@ -10,20 +9,28 @@ import { Data, ImagesService } from "../images.service";
 export class ImgComponent implements OnInit {
   index: number = 0;
   images: Data[];
-  constructor(private route: ActivatedRoute, private service: ImagesService) {}
-
-  ngDoCheck() {
-    // let i = parseInt(this.route.snapshot.paramMap.get("index"));
-    // this.index = i;
+  link: string = "";
+  constructor(private service: ImagesService) {
+    // console.log(this.images[this.index]);
   }
+
+  ngDoCheck() {}
   left() {
     this.index--;
+    // this.index = this.index == 0 ? this.images.length - 1 : this.index--;
   }
   right() {
     this.index++;
+    // this.index = this.index == this.images.length - 1 ? 0 : this.index++;
   }
   ngOnInit() {
-    this.service.getImg().subscribe(data => (this.images = data));
-    this.index = this.service.index;
+    this.service.getImg().subscribe(data => {
+      this.index = this.service.index;
+      this.images = data;
+      this.link = this.images[this.index].link;
+    });
+    // this.index = this.service.index;
+
+    //console.log(this.images[this.index]);
   }
 }

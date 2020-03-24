@@ -1,44 +1,46 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { AppRoutingModule } from "./app-routing.module";
+
 import { HttpClientModule } from "@angular/common/http";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 //Components
 import { AppComponent } from "./app.component";
 import { ImgComponent } from "./img/img.component";
-import { HeaderComponent } from "./header/header.component";
 import { GalleryComponent } from "./gallery/gallery.component";
 import { ImagesService } from "./images.service";
 
 // Angular Material Imports
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
-import { MatGridListModule } from "@angular/material/grid-list";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
+import { LayoutModule } from "@angular/cdk/layout";
+import { MatButtonModule } from "@angular/material/button";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, GalleryComponent, ImgComponent],
+  declarations: [AppComponent, GalleryComponent, ImgComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatCheckboxModule,
-    MatTabsModule,
-    MatGridListModule,
-    MatCardModule,
+    InfiniteScrollModule,
+    MatSidenavModule,
     MatIconModule,
     MatDialogModule,
     MatToolbarModule,
     HttpClientModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register("ngsw-worker.js", {
+      enabled: environment.production
+    }),
+    LayoutModule,
+    MatButtonModule,
+    MatListModule
   ],
   providers: [ImagesService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ImgComponent]
 })
 export class AppModule {}

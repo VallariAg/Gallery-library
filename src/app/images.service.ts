@@ -18,9 +18,10 @@ export class ImagesService {
   data: Data[];
   index: number;
 
-  private _url: string = "/assets/images.json";
+  private _url: string = "./assets/images.json";
   getImg(): Observable<Data[]> {
     return this.http.get<Data[]>(this._url);
   }
+
   constructor(private http: HttpClient) {}
 }

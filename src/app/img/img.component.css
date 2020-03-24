@@ -1,29 +1,20 @@
 .image {
-  width: 50%;
-  /* justify-content: center; */
-  /* justify-self: center; */
-  /* height: 25rem; */
-  /* height: 70vh; */
-  /* align-content: center; */
-  /* float: center; */
+  /* width: 50%; */
+  display: block;
+  max-width: 200px;
+  width: auto;
+  height: auto;
 }
 
-/*
- .card {
-  margin-right: 20%;
-  margin-left: 20%;
-} */
 .box {
   margin-right: 20vw;
   margin-left: 20vw;
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 902px) {
   .image {
-    /* width: 20vh; */
-    /* height: 700px; */
     display: block;
     max-width: 430px;
-    /* max-height: 95px; */
+
     width: auto;
     height: auto;
   }
@@ -32,10 +23,13 @@
     display: inline;
   }
 }
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 600px) {
   .image {
-    /* height: 50vh; */
-    width: 60vw;
+    display: block;
+    max-width: 400px;
+    width: auto;
+    height: auto;
+    /* padding: 10%; */
   }
   .swipe {
     text-align: center;
