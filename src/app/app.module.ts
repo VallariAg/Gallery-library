@@ -43,4 +43,4 @@ import { MatListModule } from "@angular/material/list";
   bootstrap: [AppComponent],
   entryComponents: [ImgComponent]
 })
-export class AppModule {}
+export class AppModule { }
