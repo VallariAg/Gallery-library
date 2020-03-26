@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ImagesService, Data } from "../images.service";
+import { ImagesService } from "../images.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ImgComponent } from "../img/img.component";
+import { IPictureDetails } from "../app.interface";
 
 @Component({
   selector: "app-gallery",
@@ -9,41 +10,31 @@ import { ImgComponent } from "../img/img.component";
   styleUrls: ["./gallery.component.css"]
 })
 export class GalleryComponent implements OnInit {
-  images: Data[];
-  allImages: Data[];
-  i: number = -1;
+  page: number = 1;
+  // TODO: Discuss variable name
+  // i: number = -1;
   index: number;
+  images: IPictureDetails[] = [];
 
-  constructor(private service: ImagesService, public dialog: MatDialog) {}
+  constructor(private service: ImagesService, public dialog: MatDialog) { }
 
-  openDialog(): void {
-    this.service.index = this.index;
+  openDialog(index): void {
     this.dialog.open(ImgComponent);
   }
+
+  // TODO: Why is scrolled Down not called
   scrollDown() {
-    let nextSix: Data[];
-    if (this.allImages.length < this.i + 7) {
-      nextSix = this.allImages.slice(this.i + 1, this.allImages.length);
-    } else {
-      nextSix = this.allImages.slice(this.i + 1, this.i + 7);
-    }
-    this.images = this.images.concat(nextSix);
-    console.log(this.images);
-    this.i += 6;
+    this.getImagesPage();
   }
 
   ngOnInit() {
-    this.service.getImg().subscribe(data => {
-      this.allImages = data;
-      this.images = this.allImages.slice(this.i + 1, this.i + 7);
-      this.i += 6;
-    });
+    // TODO: Discuss why we are calling function / abstraction for calling same
+    // subscribe again and again
+    this.getImagesPage();
   }
 
-  // ngDoCheck() {
-  //   console.log(this.images);
-  // }
-  // ngOnDestroy() {
-  //   console.log("destroy");
-  // }
+  getImagesPage() {
+    this.service.getDisplayImages(this.page).subscribe(data => this.images.push(...data));
+    this.page++;
+  }
 }

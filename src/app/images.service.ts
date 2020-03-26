@@ -1,27 +1,37 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
-
-export interface Data {
-  name: string;
-  link: string;
-  description: string;
-  creator: string;
-  licence: string;
-  download: Object;
-}
+import { catchError, map } from 'rxjs/operators';
+import { IPictureDetails } from './app.interface';
 
 @Injectable({
   providedIn: "root"
 })
 export class ImagesService {
-  data: Data[];
-  index: number;
 
-  private _url: string = "./assets/images.json";
-  getImg(): Observable<Data[]> {
-    return this.http.get<Data[]>(this._url);
+  // TODO: Let's not page it a const
+  private pageSize = 12;
+  private baseurl = "http://myserver.url/";
+  private jsonPath = "./assets/data/";
+  private jsonHttpheaders = new HttpHeaders({ 'Content-type': 'application/json' });
+  constructor(private http: HttpClient) { }
+
+  getDisplayImages(page: number): Observable<IPictureDetails[]> {
+    const path = "images?page=" + page;
+    return this.http.get<IPictureDetails[]>(this.baseurl + path, { headers: this.jsonHttpheaders })
+      .pipe(catchError(error => {
+        console.error(error);
+        return this.http.get<IPictureDetails[]>(this.jsonPath + 'images.json')
+          .pipe(map((data) => {
+            let backupData: IPictureDetails[] = [];
+            let imagesLoaded = (page - 1) * this.pageSize;
+            for (let imageNumber = 1; imageNumber <= this.pageSize; imageNumber++) {
+              const nextImage = data[imagesLoaded + imageNumber];
+              if (nextImage === undefined) { break; }
+              backupData.push(nextImage);
+            }
+            return backupData;
+          }));
+      }));
   }
-
-  constructor(private http: HttpClient) {}
 }

@@ -5,24 +5,32 @@
   border-radius: 100%;
 }
 
-.eachImage {
+#gallary-container {
+  overflow-y: scroll;
+  overflow-y: scroll;
+}
+
+/* https://github.com/nicky-lenaers/ngx-scroll-to/issues/66 */
+
+/* TODO: discuss classes & Ids */
+/* .eachImage { */
+.gallery-item {
   border: 1px solid #ddd;
   border-radius: 4px;
-
   width: 25vh;
   height: 25vh;
   object-fit: cover;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.eachImage:hover {
+
+.gallery-item:hover {
   box-shadow: 0 2px 2px 1px rgba(5, 74, 97, 0.5);
   z-index: 200;
 }
 
 /* Small devices (landscape phones, less than 768px) */
 @media only screen and (max-width: 600px) {
-  .gridss {
+  .gallery-grid {
     display: grid;
     row-gap: 1rem;
     justify-content: center;
@@ -42,7 +50,7 @@
 }
 /* Small to Medium devices */
 @media only screen and (min-width: 550px) {
-  .gridss {
+  .gallery-grid {
     display: grid;
     grid-gap: 5%;
     grid-template-columns: 1fr 1fr;
@@ -55,7 +63,7 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 800px) {
-  .gridss {
+  .gallery-grid {
     display: grid;
     grid-gap: 5%;
     grid-template-columns: 1fr 1fr 1fr;
@@ -70,7 +78,7 @@
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .gridss {
+  .gallery-grid {
     display: grid;
 
     margin-right: 20%;
