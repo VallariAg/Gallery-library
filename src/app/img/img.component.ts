@@ -1,28 +1,17 @@
-import { Component, OnInit } from "@angular/core";
-import { ImagesService } from "../images.service";
+import { Component, Inject } from "@angular/core";
+
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: "app-img",
   templateUrl: "./img.component.html",
-  styleUrls: ["./img.component.css"]
+  styleUrls: ["./img.component.css"],
 })
-export class ImgComponent implements OnInit {
-  index: number = 0;
-  link: string = "";
-  constructor(private service: ImagesService) { }
-
-  ngDoCheck() { }
-  left() { this.index--; }
-  right() {
-    this.index++;
-    // TODO: Remove debugging when done
-    // this.index = this.index == this.images.length - 1 ? 0 : this.index++;
-  }
-  ngOnInit() {
+export class ImgComponent {
+  link: string;
+  constructor(@Inject(MAT_DIALOG_DATA) private data) {
+    this.link = data.ImageLink;
   }
 
-  getImageUrl() {
-    // TODO: Discuss hierarchy of resource
-    // this.service.getImageUrl(this.index).subscribe(data => this.link = data[this.index].link);
-  }
+  ngOnInit() {}
 }

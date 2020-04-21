@@ -1,27 +1,44 @@
 # Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+A PWA to display your images in a gallery, made with Angular.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm` is distributed with Node.js- which means that when you download Node.js, you automatically get npm installed on your computer.
+To install node.js:
 
-## Code scaffolding
+```
+    sudo apt-get update
+    sudo apt-get install nodejs
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
 
-## Build
+Install Angular CLI:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm install -g @angular/cli
+```
 
-## Running unit tests
+## Install npm packages
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install the npm packages described in the package.json and verify that it works:
 
-## Running end-to-end tests
+```
+npm install
+npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The npm start command builds (compiles TypeScript and copies assets) the application into dist/, watches for changes to the source files, and runs live-server.
 
-## Further help
+Shut it down manually with Ctrl-C.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Built With
+
+- HTML5
+- CSS
+- JavaScript
+- Firebase (for web)
+
+## Authors
+
+- Vallari Agrawal - [VallariAg](github.com/vallariag)

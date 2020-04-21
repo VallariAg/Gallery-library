@@ -45,5 +45,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# TODO: Why are the files changed?
+
 docs/

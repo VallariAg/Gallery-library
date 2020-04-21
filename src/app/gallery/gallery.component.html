@@ -1,18 +1,32 @@
 <div class="jumbotron">
-  <img src="https://cdn5.vectorstock.com/i/1000x1000/88/84/happy-woman-face-vector-8808884.jpg"
-    class="mx-auto d-block profile" alt=".." />
+  <img
+    src="https://cdn5.vectorstock.com/i/1000x1000/88/84/happy-woman-face-vector-8808884.jpg"
+    class="mx-auto d-block profile"
+    alt=".."
+  />
   <br />
   <h4 style="text-align: center; color: rgb(83, 86, 87);" class="mx-auto">
     Vallari Agrawal
   </h4>
 </div>
-<!-- TODO: What's most important what you realize how to "find" the problem and not the symptom.-->
-<!-- TODO: Discuss about vscode options for auto formatting -->
-<div id='gallary-container' [alwaysCallback]="true" infiniteScroll [infiniteScrollDistance]="100"
-  [infiniteScrollThrottle]="300" [scrollWindow]="false" (scrolled)="scrollDown()">
+
+<div
+  id="gallary-container"
+  [alwaysCallback]="true"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [fromRoot]="true"
+  (scrolled)="scrollDown()"
+>
   <div class="gallery-grid">
-    <div *ngFor="let image of images; index as index;">
-      <img (click)="openDialog(index)" class="gallery-item" src="{{ image.link }}" alt="{{ image.name }}" />
+    <div *ngFor="let image of images; index as ImageClicked">
+      <img
+        (click)="openDialog(image.link)"
+        class="gallery-item"
+        src="{{ image.link }}"
+        alt="{{ image.name }}"
+      />
     </div>
   </div>
 </div>

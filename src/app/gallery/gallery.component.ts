@@ -3,26 +3,25 @@ import { ImagesService } from "../images.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ImgComponent } from "../img/img.component";
 import { IPictureDetails } from "../app.interface";
+import { CompileTemplateMetadata } from "@angular/compiler";
 
 @Component({
   selector: "app-gallery",
   templateUrl: "./gallery.component.html",
-  styleUrls: ["./gallery.component.css"]
+  styleUrls: ["./gallery.component.css"],
 })
 export class GalleryComponent implements OnInit {
   page: number = 1;
-  // TODO: Discuss variable name
-  // i: number = -1;
-  index: number;
   images: IPictureDetails[] = [];
 
-  constructor(private service: ImagesService, public dialog: MatDialog) { }
+  constructor(private service: ImagesService, public dialog: MatDialog) {}
 
-  openDialog(index): void {
-    this.dialog.open(ImgComponent);
+  openDialog(ImageLink: string): void {
+    this.dialog.open(ImgComponent, {
+      data: { ImageLink: ImageLink },
+    });
   }
 
-  // TODO: Why is scrolled Down not called
   scrollDown() {
     this.getImagesPage();
   }
@@ -34,7 +33,17 @@ export class GalleryComponent implements OnInit {
   }
 
   getImagesPage() {
-    this.service.getDisplayImages(this.page).subscribe(data => this.images.push(...data));
+    let getImages = this.service
+      .getDisplayImages(this.page)
+      .subscribe((data) => {
+        // called everytime we scroll -> needs to stop when all images are loaded
+        // max pages = 2 here, should not exceed that
+        if (data.length < 12) {
+          console.log(data.length);
+          getImages.unsubscribe();
+        }
+        this.images.push(...data);
+      });
     this.page++;
   }
 }
