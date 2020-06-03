@@ -9,22 +9,34 @@ import { IPictureDetails } from "./app.interface";
 })
 export class ImagesService {
   private pageSize = 12;
-  private baseurl = "http://myserver.url/";
+  private baseurl = "http://localhost:2700/api/";
   private jsonPath = "./assets/data/";
   private jsonHttpheaders = new HttpHeaders({
     "Content-type": "application/json",
   });
-  constructor(private http: HttpClient) {}
+  private pathToImages = './assets/images/'
+  constructor(private http: HttpClient) { }
+
 
   getDisplayImages(page: number): Observable<IPictureDetails[]> {
     const path = "images?page=" + page;
+
     return this.http
       .get<IPictureDetails[]>(this.baseurl + path, {
         headers: this.jsonHttpheaders,
       })
       .pipe(
+        map((data) => {
+          console.log("success get", data);
+          let backupData: IPictureDetails[] = data;
+          backupData.forEach((pictureDetail) => {
+            pictureDetail.link = this.pathToImages + pictureDetail.link;
+          })
+          return backupData;
+
+        }),
         catchError((error) => {
-          // console.error(error);
+          console.error(error);
           return this.http
             .get<IPictureDetails[]>(this.jsonPath + "images.json")
             .pipe(
@@ -49,3 +61,6 @@ export class ImagesService {
       );
   }
 }
+
+
+

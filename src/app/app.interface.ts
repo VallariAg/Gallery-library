@@ -8,6 +8,7 @@ interface IDownloadUrls {
 }
 
 export interface IPictureDetails {
+    id: number;
     name: string;
     link: string;
     description: string;
