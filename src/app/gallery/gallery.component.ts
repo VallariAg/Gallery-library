@@ -14,7 +14,7 @@ export class GalleryComponent implements OnInit {
   page: number = 1;
   images: IPictureDetails[] = [];
 
-  constructor(private service: ImagesService, public dialog: MatDialog) {}
+  constructor(private service: ImagesService, public dialog: MatDialog) { }
 
   openDialog(ImageLink: string): void {
     this.dialog.open(ImgComponent, {
@@ -27,8 +27,6 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO: Discuss why we are calling function / abstraction for calling same
-    // subscribe again and again
     this.getImagesPage();
   }
 

@@ -27,7 +27,7 @@ export class ImagesService {
       })
       .pipe(
         map((data) => {
-          console.log("success get", data);
+
           let backupData: IPictureDetails[] = data;
           backupData.forEach((pictureDetail) => {
             pictureDetail.link = this.pathToImages + pictureDetail.link;

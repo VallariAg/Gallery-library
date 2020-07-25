@@ -33,6 +33,7 @@
     overflow: hidden;
     justify-items: center;
     grid-template-columns: 1fr;
+    
   }
   .gallery-item {
     width:  80vw;
@@ -49,21 +50,22 @@
     column-gap: 2%;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-
+    margin-right: 20%;
+    margin-left: 20%;
   }
  
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 700px) {
   .gallery-grid {
     display: grid;
     grid-gap: 5%;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-right: 10%;
-    margin-left: 10%;
     justify-items: center;
     justify-content: center;
+    margin-right: 20%;
+    margin-left: 20%;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
