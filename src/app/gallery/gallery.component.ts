@@ -1,49 +1,47 @@
 import { Component, OnInit } from "@angular/core";
-import { ImagesService, Data } from "../images.service";
+import { ImagesService } from "../images.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ImgComponent } from "../img/img.component";
+import { IPictureDetails } from "../app.interface";
+import { CompileTemplateMetadata } from "@angular/compiler";
 
 @Component({
   selector: "app-gallery",
   templateUrl: "./gallery.component.html",
-  styleUrls: ["./gallery.component.css"]
+  styleUrls: ["./gallery.component.css"],
 })
 export class GalleryComponent implements OnInit {
-  images: Data[];
-  allImages: Data[];
-  i: number = -1;
-  index: number;
+  page: number = 1;
+  images: IPictureDetails[] = [];
 
-  constructor(private service: ImagesService, public dialog: MatDialog) {}
+  constructor(private service: ImagesService, public dialog: MatDialog) { }
 
-  openDialog(): void {
-    this.service.index = this.index;
-    this.dialog.open(ImgComponent);
-  }
-  scrollDown() {
-    let nextSix: Data[];
-    if (this.allImages.length < this.i + 7) {
-      nextSix = this.allImages.slice(this.i + 1, this.allImages.length);
-    } else {
-      nextSix = this.allImages.slice(this.i + 1, this.i + 7);
-    }
-    this.images = this.images.concat(nextSix);
-    console.log(this.images);
-    this.i += 6;
-  }
-
-  ngOnInit() {
-    this.service.getImg().subscribe(data => {
-      this.allImages = data;
-      this.images = this.allImages.slice(this.i + 1, this.i + 7);
-      this.i += 6;
+  openDialog(ImageLink: string): void {
+    this.dialog.open(ImgComponent, {
+      data: { ImageLink: ImageLink },
     });
   }
 
-  // ngDoCheck() {
-  //   console.log(this.images);
-  // }
-  // ngOnDestroy() {
-  //   console.log("destroy");
-  // }
+  scrollDown() {
+    this.getImagesPage();
+  }
+
+  ngOnInit() {
+    this.getImagesPage();
+  }
+
+  getImagesPage() {
+    let getImages = this.service
+      .getDisplayImages(this.page)
+      .subscribe((data) => {
+        // called everytime we scroll -> needs to stop when all images are loaded
+        // max pages = 2 here, should not exceed that
+        if (data.length < 12) {
+          console.log(data.length);
+          getImages.unsubscribe();
+        }
+        this.images.push(...data);
+      });
+    this.page++;
+  }
 }

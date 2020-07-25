@@ -11,20 +11,22 @@
 </div>
 
 <div
-  class="gridss"
-  infinite-scroll
+  id="gallary-container"
+  [alwaysCallback]="true"
+  infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="50"
+  [fromRoot]="true"
   (scrolled)="scrollDown()"
-  [scrollWindow]="false"
 >
-  <div *ngFor="let i of images; index as x">
-    <img
-      (click)="index = x; openDialog()"
-      class="eachImage"
-      src="{{ i.link }}"
-      alt="{{ i.name }}"
-    />
+  <div class="gallery-grid">
+    <div *ngFor="let image of images; index as ImageClicked">
+      <img
+        (click)="openDialog(image.link)"
+        class="gallery-item"
+        src="{{ image.link }}"
+        alt="{{ image.name }}"
+      />
+    </div>
   </div>
 </div>
-<br />
